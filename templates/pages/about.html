@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
+{% load static %}
 {% block content %}
 <h1>About</h1>
+<!-- Nav - Breadcrumb - Footer-->
+<Section>
+    <div>
+        <img src="{% static 'img/about.jpg' %}" alt="">
+    </div>
+</Section>
+<section>
+    <div>
+        <a href="{% url 'index' %}"> Home </a>
+    </div>
+</section>
 {% endblock %}
