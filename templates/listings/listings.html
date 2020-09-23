@@ -9,5 +9,17 @@
 </section>
 
 <!-- Listing 1 and Loop -->
-
+<section>
+    <div>
+        {% if listings %}
+        {% for listing in listings %}
+        <div> Go </div>
+        {% endfor %}
+        {% else %}
+        <div class="col-md-12">
+            <p>No Listings available</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}
