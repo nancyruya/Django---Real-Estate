@@ -1,6 +1,32 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
+
 {% block content %}
 <h1>Home</h1>
 <!--Showcase-->
+<section>
+    <div>
+        {% if listings %}
+        {% for listing in listings %}
+
+        <h4> {{ listing.title }}</h4>
+        <img src="{{ listing.photo_main.url }}">
+        <span>${{ listing.price | intcomma }}</span>
+        <p>Address: {{ listing.city}} {{ listing.state}}, {{ listing.zipcode}}</p>
+        <div>SQFT: {{ listing.sqft}}</div>
+        <div>Garage: {{ listing.garage}}</div>
+        <div>Bedrooms: {{ listing.bedrooms}}</div>
+        <div>Bathrooms: {{ listing.bathrooms}}</div>
+        <div>Realtor: {{ listing.realtor }}</div>
+        <div>{{ listing.list_date | timesince }}</div>
+        <a href="{% url 'listing' listing.id %}">More Info</a>
+        {% endfor %}
+
+        {% else %}
+        <div class="col-md-12">
+            <p>No Listings available</p>
+        </div>
+        {% endif %}
+    </div>
 {% endblock %}
