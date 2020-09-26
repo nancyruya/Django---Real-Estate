@@ -6,6 +6,22 @@
 <h1>Home</h1>
 <!--Showcase-->
 <section>
+    <!-- Form -->
+    <div>
+        <label> State </label>
+        <select>
+            {% for key, value in bedroom_choices.items %}
+            <option value="{{ key }}">{{ value }}</option>
+            {% endfor %}
+        </select>
+        <select class="form-control">
+            <option selected="true" disabled="disabled">State (All)</option>
+            {% for key, value in state_choices.items %}
+            <option value="{{ key }}"> {{ value }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
     <div>
         {% if listings %}
         {% for listing in listings %}
