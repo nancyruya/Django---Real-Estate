@@ -1,1 +1,21 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+
 <h1>Search</h1>
+
+<select>
+    {% for key, value in bedroom_choices.items %}
+    <option value="{{ key }}">{{ value }}</option>
+    {% endfor %}
+</select>
+<select class="form-control">
+    <option selected="true" disabled="disabled">State (All)</option>
+    {% for key, value in state_choices.items %}
+    <option value="{{ key }}"> {{ value }}</option>
+    {% endfor %}
+</select>
+
+{% endblock %}
