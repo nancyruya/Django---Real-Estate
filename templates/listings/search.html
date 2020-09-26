@@ -6,16 +6,46 @@
 
 <h1>Search</h1>
 
-<select>
+<form action="{% url 'search' %}">
+<div>
+    <label>Keywords</label>
+    <input type="text" name="keywords" class="form-control" placeholder="Keyword">
+</div>
+<select name="bedrooms" class="form-control">
     {% for key, value in bedroom_choices.items %}
     <option value="{{ key }}">{{ value }}</option>
     {% endfor %}
 </select>
-<select class="form-control">
+<select name="state" class="foorm-control">
     <option selected="true" disabled="disabled">State (All)</option>
     {% for key, value in state_choices.items %}
     <option value="{{ key }}"> {{ value }}</option>
     {% endfor %}
 </select>
+<button class="btn btn-secondary btn-block mt-4" type="submit"> Submit form</button>
+</form>
+
+{% if listings %}
+{% for listing in listings %}
+<!-- Listings -->
+<h4> {{ listing.title }}</h4>
+<img src="{{ listing.photo_main.url }}">
+<span>{{ listing.price | intcomma }}</span>
+<p>Address: {{ listing.city}} {{ listing.state}}, {{ listing.zipcode}}</p>
+<div>SQFT: {{ listing.sqft}}</div>
+<div>Garage: {{ listing.garage}}</div>
+<div>Bedrooms: {{ listing.bedrooms}}</div>
+<div>Bathrooms: {{ listing.bathrooms}}</div>
+<div>Realtor: {{ listing.realtor }}</div>
+<div>{{ listing.list_date | timesince }}</div>
+<a href="{% url 'listing' listing.id %}">More Info</a>
+{% endfor %}
+
+{% else %}
+<div class="col-md-12">
+    <p>No Listings available</p>
+</div>
+{% endif %}
+
 
 {% endblock %}
