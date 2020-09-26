@@ -7,6 +7,8 @@
 <!--Showcase-->
 <section>
     <!-- Form -->
+    <form action="{% url 'search' %}">
+
     <div>
         <label> State </label>
         <select>
@@ -21,7 +23,8 @@
             {% endfor %}
         </select>
     </div>
-
+    <button class="btn btn-secondary btn-block mt-4" type="submit"> Submit form</button>
+</form>
     <div>
         {% if listings %}
         {% for listing in listings %}
