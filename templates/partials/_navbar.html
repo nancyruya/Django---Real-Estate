@@ -19,4 +19,26 @@
         <a class="nav-link" href="{% url 'listings' %}">Featured Listings</a>
         </li>
     </ul>
+
+    <ul>
+        <li
+        {% if 'register' in request.path %}
+            class="nav-item active mr-s"
+        {% else %}
+            class="nav-item mr-3"
+        {% endif %}
+        >
+            <a href="{% url 'register' %}">Register</a>
+        </li>
+        <li
+        {% if 'login' in request.path %}
+            class="nav-item active mr-s"
+        {% else %}
+            class="nav-item mr-3"
+        {% endif %}
+        >
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+    </ul>
+
 </div>
